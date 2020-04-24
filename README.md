@@ -84,3 +84,13 @@ And again, once that is done, you test the whole inventory as follows:
 `./push_all mysupersecretpassword`
 
 Once successful, your public key will have been added to authorized_keys on all the target machines and you will be able to connect to them from PuTTY or from your control host without being prompted for a password.
+
+### Testing sudo access
+
+Verify you have sudo access to (for instance) the *oracle* user:
+
+1. create the file ~/*oracle*_inventory.txt and populate it with the names of hosts to target.
+
+2. `/test_all.sh *oracle* mysudopassword`
+
+3. `cat test_*oracle*.out`
