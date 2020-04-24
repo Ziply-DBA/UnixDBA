@@ -1,0 +1,8 @@
+- name: Show SIDs
+  hosts: Oracle
+  tasks:
+# Usage:  ansible-playbook -i dbinventory.txt show_SIDs.yaml | grep xxxx
+   - name: Scan running processes
+     shell: ps -ef | grep ora_smon | grep -v grep | grep -v sed |  awk {'print $NF'} | sed "s/ora_smon_/xxxx {{ inventory_hostname }} /g"
+     register: sid
+   - debug: var=sid.stdout_lines
