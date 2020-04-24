@@ -47,5 +47,18 @@ If you don't have **pip**, you can get it this way:
 
 ## Running the Repository Scripts
 ### Verifying Host Access
+You may or may not have access to **git** on your control host to clone this repository. Let's assume you don't. If you clone the repository elsewhere and FTP it to your control host or just use **vi** to create new files and copy/paste from github.com, that's fine. Remember to `chmod u+x` on everything. 
+
+You may want to test one host before going for the whole set:
+
+`./validate_password.sh userID mysupersecretpassword hostname.example.net`
+
+Once that is done, you test the whole inventory as follows:
+
+`./validate_all mysupersecretpassword`
+`grep correct validate.out`
+`grep correct validate.out`
+
+Based on the results, you may want to adjust your inventory file before proceeding on to try pushing your public SSH key out.
 
 ### Pushing Your Key to Remote Hosts 
