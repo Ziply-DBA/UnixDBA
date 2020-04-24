@@ -65,6 +65,9 @@ Once that is done, you test the whole inventory as follows:
 
 Based on the results, you may want to adjust your inventory file before proceeding on to try pushing your public SSH key out.
 
+NOTE: If, for some reason, you already have SSH keys set up between your control and a remote host, you will get the "Failed to get password prompt" error for that host, because the host will not be prompting for a password.
+
+
 ### Pushing Your Key to Remote Hosts 
 For some reason, **ssh-copy-id**, the program on which the following steps rely, is kind of fussy about ID file names. Without spending too much time trying to figure out why, I wrote these scripts to just look for **/home/$username/.ssh/public_key.pub**.
 
