@@ -33,4 +33,14 @@ These scripts assume that the user has multiple Unix or Linux accounts on the sa
 
 5. Copy the contents of the OpenSSH-formatted private key converted by puttygen ("userID.rsa" in the above example) into the **~/.ssh/id_rsa** file on your control host. At this point, if you use ssh to connect from this host to an account on another host having the matching key in its authorized_keys file, you will not need to enter a password. We will set up other hosts to have the necessary key in a subsequent step.
 
+6. Make sure you have ansible installed ($ which ansible). If not, see installation instructions [here](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html). The easiest method, assuming you have python installed, is to use **pip**. Assuming you don't have root access, you can install it just for your own user account:
 
+`pip install --user ansible`
+
+If you don't have **pip**, you can get it this way:
+
+`curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py`
+
+`python get-pip.py --user`
+
+## Running the Repository Scripts
