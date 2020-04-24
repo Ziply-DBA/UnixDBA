@@ -4,7 +4,7 @@ then
         echo "Usage: $0 password"
         exit 1
 fi
-$file=~/host_inventory.txt
+file=`ls ~/host_inventory.txt`
 
 if [ -s "$file" ]
  then
