@@ -15,7 +15,7 @@ if {[llength $argv] == 0} {
 spawn ssh -q -o StrictHostKeyChecking=no $username@$hostname
 
 expect {
-  timeout { send_user "\nFailed to get password prompt\n"; exit 1 }
+  timeout { send_user "\nFailed to get password prompt for $hostname\n"; exit 1 }
   eof { send_user "\nSSH failure for $hostname\n"; exit 1 }
   "*assword"
 }
