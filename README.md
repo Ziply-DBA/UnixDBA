@@ -89,8 +89,8 @@ Once successful, your public key will have been added to authorized_keys on all 
 
 Verify you have sudo access to (for instance) the *oracle* user:
 
-1. create the file ~/*oracle*_inventory.txt and populate it with the names of hosts to target.
+1. create the file ~/oracle_inventory.txt and populate it with the names of hosts to target.
 
-2. `/test_all.sh *oracle* mysudopassword`
+2. `/test_all.sh oracle mysudopassword`
 
-3. `cat test_*oracle*.out`
+3. `cat test_oracle.out`
