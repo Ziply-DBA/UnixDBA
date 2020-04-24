@@ -13,6 +13,9 @@ These scripts assume that the user has multiple Unix or Linux accounts on the sa
 Set up and save a private-public key pair with no passphrase using puttygen (for instructions click [here](https://docs.oracle.com/en/cloud/paas/event-hub-cloud/admin-guide/generate-ssh-key-pair-using-puttygen.html)). In your default PuTTY settings, set the "Private key file for authentication" under "Connection -> SSH -> Auth" to the private key you created. Log on to your control host and create a ".ssh" directory in your home if there is none, then create an authorized_keys file. Both of these must not be writeable by others:
 
 `mkdir -p ~/.ssh`
+
 `touch ~/.ssh/authorized keys`
+
 `chmod 700 ~/.ssh`
+
 `chmod 600 ~/.ssh/authorized keys`
