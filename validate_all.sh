@@ -13,6 +13,7 @@ if [ -s "$file" ]
     echo "$file does not exist, or is empty "
     exit 1
  fi
+cp /dev/null validate.out
 for host in `cat ~/host_inventory.txt`; do
    ./validate_password.sh $LOGNAME $1 $host  >> validate.out
 done
