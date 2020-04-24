@@ -14,8 +14,8 @@ Set up and save a private-public key pair with no passphrase using puttygen (for
 
 `mkdir -p ~/.ssh`
 
-`touch ~/.ssh/authorized keys`
+`touch ~/.ssh/authorized_keys`
 
 `chmod 700 ~/.ssh`
 
-`chmod 600 ~/.ssh/authorized keys`
+`chmod 600 ~/.ssh/authorized_keys`
