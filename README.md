@@ -64,3 +64,18 @@ Once that is done, you test the whole inventory as follows:
 Based on the results, you may want to adjust your inventory file before proceeding on to try pushing your public SSH key out.
 
 ### Pushing Your Key to Remote Hosts 
+For some reason, **ssh-copy-id**, the program on which the following steps rely, is kind of fussy about ID file names. Without spending too much time trying to figure out why, I wrote these scripts to just look for **/home/$username/.ssh/public_key.pub**.
+
+So, before you begin, create that file. Assuming it's the only entry in your authorized_keys file, you can copy it from there:
+
+`cp ~/.ssh/authorized_keys ~/.ssh/public_key.pub`
+
+Again, you may want to test one host before going for the whole set:
+
+`./push_key.sh userID mysupersecretpassword hostname.example.net`
+
+And again, once that is done, you test the whole inventory as follows:
+
+`./push_all mysupersecretpassword`
+
+Once successful, your public key will have been added to authorized_keys on all the target machines and you will be able to connect to them from PuTTY or from your control host without being prompted for a password.
