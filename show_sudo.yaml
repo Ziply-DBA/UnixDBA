@@ -1,4 +1,5 @@
 - name: show sudo su permissions
+#NOTE: Sadly, this fails on systems where sudo requires a password even with the "-l" option
   hosts: all
   tasks:
   - name : Check sudo
