@@ -59,7 +59,7 @@ Once that is done, you test the whole inventory as follows:
 
 `grep correct validate.out`
 
-`grep correct validate.out`
+`grep incorrect validate.out`
 
 Based on the results, you may want to adjust your inventory file before proceeding on to try pushing your public SSH key out.
 
