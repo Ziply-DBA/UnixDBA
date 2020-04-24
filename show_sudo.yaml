@@ -4,8 +4,8 @@
   - name : Check sudo
     #Try these settings if the playbook hangs
     #ignore_errors: True
-    #async: 60
-    #poll: 60
+    #async: 10
+    #poll: 5
     shell: sudo -l | grep /bin/su | sed 's/\/bin\/su/xxxx "{{ inventory_hostname }}"/g' | awk {'print $2, $4'}
     register: sudo
   - debug: var=sudo.stdout_lines
