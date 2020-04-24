@@ -43,4 +43,9 @@ If you don't have **pip**, you can get it this way:
 
 `python get-pip.py --user`
 
+7. In your home directory, create a host_inventory.txt file with the name or FQDN of each Unix/Linux host you want to be able to connect to, one host per line.
+
 ## Running the Repository Scripts
+### Verifying Host Access
+
+### Pushing Your Key to Remote Hosts 
