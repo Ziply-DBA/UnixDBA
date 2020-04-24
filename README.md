@@ -51,7 +51,7 @@ You may or may not have access to **git** on your control host to clone this rep
 
 You may want to test one host before going for the whole set:
 
-`./validate_password.sh userID mysupersecretpassword hostname.example.net`
+`./validate_password.sh $LOGNAME mysupersecretpassword hostname.example.net`
 
 Once that is done, you test the whole inventory as follows:
 
@@ -72,7 +72,7 @@ So, before you begin, create that file. Assuming it's the only entry in your aut
 
 Again, you may want to test one host before going for the whole set:
 
-`./push_key.sh userID mysupersecretpassword hostname.example.net`
+`./push_key.sh $LOGNAME mysupersecretpassword hostname.example.net`
 
 And again, once that is done, you test the whole inventory as follows:
 
