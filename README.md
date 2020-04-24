@@ -56,7 +56,9 @@ You may want to test one host before going for the whole set:
 Once that is done, you test the whole inventory as follows:
 
 `./validate_all mysupersecretpassword`
+
 `grep correct validate.out`
+
 `grep correct validate.out`
 
 Based on the results, you may want to adjust your inventory file before proceeding on to try pushing your public SSH key out.
