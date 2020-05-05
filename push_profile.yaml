@@ -1,0 +1,25 @@
+- name: Profile playbook
+  hosts: all
+  tasks:
+   - name: register the remote username
+     become: false
+     command: whoami
+     changed_when: false
+     register: whoami
+
+   - name: Add line to .bash_profile to run user-specific profile if found
+     lineinfile:
+        create: yes
+        path: /home/{{ whoami.stdout }}/.bash_profile
+        line: '[[ -f ~/$LOGNAME.profile ]] && . ~/$LOGNAME.profile'
+
+   - name: Copy user-specific profile which will source the oracle profile if found
+     copy:
+       src:  /home/{{ whoami.stdout }}/{{ whoami.stdout }}.profile
+       dest: /home/{{ whoami.stdout }}/{{ whoami.stdout }}.profile
+
+   - name: Copy the oracle profile to set up the oracle path, sid, etc.
+     when: "'oracle' in group_names"     
+     copy:
+       src: /home/{{ whoami.stdout }}/oracle.profile
+       dest: /home/{{ whoami.stdout }}/oracle.profile
