@@ -87,7 +87,7 @@ And again, once that is done, you test the whole inventory as follows:
 
 Once successful, your public key will have been added to authorized_keys on all the target machines and you will be able to connect to them from PuTTY or from your control host without being prompted for a password.
 
-### Testing sudo access
+#### Testing sudo access
 
 Verify you have sudo access to (for instance) the *oracle* user:
 
