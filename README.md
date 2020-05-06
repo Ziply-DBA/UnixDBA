@@ -43,7 +43,7 @@ If you don't have **pip**, you can get it this way:
 
 `python get-pip.py --user`
 
-7. In your home directory, create a host_inventory.txt file with the name or FQDN of each Unix/Linux host you want to be able to connect to, one host per line.
+7. In your home directory, create a host_inventory.txt file with the name or FQDN of each Unix/Linux host you want to be able to connect to. This is not your ansible inventory file, which we will discuss below; it's just a simple test file with one host per line.
 
 ### Running the Repository Expect Scripts
 Expect is a scripting tool that comes in very handy when you will be prompted for a password. We will use expect to lay the groundwork for what follows by verifying access to the hosts and pushing out our SSH keys so that we won't need to enter our password any more. Once that is done, we can use Ansible to do almost anything.
