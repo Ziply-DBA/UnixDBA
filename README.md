@@ -45,8 +45,10 @@ If you don't have **pip**, you can get it this way:
 
 7. In your home directory, create a host_inventory.txt file with the name or FQDN of each Unix/Linux host you want to be able to connect to, one host per line.
 
-## Running the Repository Scripts
-### Verifying Host Access
+### Running the Repository Expect Scripts
+Expect is a scripting tool that comes in very handy when you will be prompted for a password. We will use expect to lay the groundwork for what follows by verifying access to the hosts and pushing out our SSH keys so that we won't need to enter our password any more. Once that is done, we can use Ansible to do almost anything.
+
+#### Verifying Host Access
 You may or may not have access to **git** on your control host to clone this repository. Let's assume you don't. If you clone the repository elsewhere and FTP it to your control host or just use **vi** to create new files and copy/paste from github.com, that's fine. Remember to `chmod u+x` on everything. 
 
 You may want to test one host before going for the whole set:
@@ -68,7 +70,7 @@ Based on the results, you may want to adjust your inventory file before proceedi
 NOTE: If, for some reason, you already have SSH keys set up between your control and a remote host, you will get the "Failed to get password prompt" error for that host, because the host will not be prompting for a password.
 
 
-### Pushing Your Key to Remote Hosts 
+#### Pushing Your Key to Remote Hosts 
 For some reason, **ssh-copy-id**, the program on which the following steps rely, is kind of fussy about ID file names. Without spending too much time trying to figure out why, I wrote these scripts to just look for **/home/$username/.ssh/public_key.pub**.
 
 So, before you begin, create that file. Assuming it's the only entry in your authorized_keys file, you can copy it from there:
@@ -94,3 +96,11 @@ Verify you have sudo access to (for instance) the *oracle* user:
 2. `/test_all.sh oracle mysudopassword`
 
 3. `cat test_oracle.out`
+
+### Running the Repository Ansible Scripts
+Now that we have password-less access to all our hosts, we can use Ansible to start configuring them to our liking and polling them for information. Consult the online documentation for ansible for guidance on how to create your ansible inventory file. If you have machines hosting Oracle databases, put them in a group called "oracle".
+
+#### Set your environment variables
+1. On your control host, create a profile script with your username ($LOGNAME.profile) and store it in your home (/home/$LOGNAME). Fill the file with all the little things you want the shell to know about you, such as the aliases you use for common commands. Optionally, create oracle.profile in your home (see example in this repository) to be executed on whatever machines host an oracle database. Add a line to your $LOGNAME.profile to source oracle.profile if it exists ( `[[ -f ~/oracle.profile ]] && . ~/oracle.profile` ) 
+
+2. Use push_profile.yaml to push your profile script(s) to your inventory of hosts and to add a line in .bash_profile on each remote host to source these new scripts.
