@@ -100,7 +100,7 @@ Verify you have sudo access to (for instance) the *oracle* user:
 ### Running the Repository Ansible Scripts
 Now that we have password-less access to all our hosts, we can use Ansible to start configuring them to our liking and polling them for information. Consult the online documentation for ansible for guidance on how to create your ansible inventory file (inventoryfile.txt in the example below). If you have machines hosting Oracle databases, put them in a group called "oracle".
 
-#### Set your environment variables
+#### Set your environment variables on all remote hosts at once
 1. On your control host, create a profile script with your username ($LOGNAME.profile) and store it in your home (/home/$LOGNAME). Fill the file with all the little things you want the shell to know about you, such as the aliases you use for common commands. Optionally, create oracle.profile in your home (see example in this repository) to be executed on whatever machines host an oracle database. Add a line to your $LOGNAME.profile to source oracle.profile if it exists ( `[[ -f ~/oracle.profile ]] && . ~/oracle.profile` ) 
 
 2. Use push_profile.yaml to push your profile script(s) to your inventory of hosts and to add a line in .bash_profile on each remote host to source these new scripts:
