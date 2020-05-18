@@ -114,3 +114,5 @@ Now that we have password-less access to all our hosts, we can use Ansible to st
 2. Use push_profile.yaml to push your profile script(s) to your inventory of hosts and to add a line in .bash_profile on each remote host to source these new scripts:
 
 `ansible-playbook -i inventoryfile.txt push_profile.yaml`
+
+`ansible-playbook -i inventoryfile.txt oracle_password.yaml`
