@@ -115,4 +115,4 @@ Now that we have password-less access to all our hosts, we can use Ansible to st
 
 `ansible-playbook -i inventoryfile.txt push_profile.yaml`
 
-`ansible-playbook -i inventoryfile.txt oracle_password.yaml`
+optionally: `ansible-playbook -i inventoryfile.txt oracle_password.yaml`
