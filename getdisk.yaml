@@ -1,0 +1,7 @@
+- name: Disk usage playbook
+  hosts: app_account
+  tasks:
+   - name: print df
+     shell: df -Pk | grep -v '^Filesystem' | sed "s/^/DISKUSAGE $LOGNAME `uname -n` /"
+     register: df
+   - debug: var=df.stdout_lines

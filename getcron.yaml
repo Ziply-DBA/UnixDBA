@@ -1,0 +1,7 @@
+- name: Cron playbook
+  hosts: all
+  tasks:
+   - name: print crontab
+     shell: crontab -l | grep -v '^#' | sed "s/^/CRONTAB $LOGNAME `uname -n` /"
+     register: crontab
+   - debug: var=crontab.stdout_lines

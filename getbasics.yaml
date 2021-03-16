@@ -1,0 +1,17 @@
+- name: Census basics playbook
+  hosts: Oracle
+  tasks:
+   - name: Get memory, timezone, cpu count
+     shell: | 
+       T_ZONE=`date | awk '{print $5}'`
+       MEM_KB=`vmstat -s | grep "total memory"  | awk '{print $1}'`
+       echo  $MEM_KB | grep [0-9] >/dev/null || MEM_KB=0 
+       MEM_MB=`expr $MEM_KB \/ 1024`
+       SOCK_CT=`lscpu  | grep "Socket" | awk '{print $NF}' || echo "0"`
+       echo  $SOCK_CT | grep [0-9] >/dev/null || SOCK_CT=0
+       CPU_PER=`lscpu  | grep "per socket" | awk '{print $NF}' || echo "0"`
+       echo  $CPU_PER | grep [0-9] >/dev/null || CPU_PER=0
+       CPU_CT=`expr $SOCK_CT \* $CPU_PER`
+       echo CENSUSDATA `uname -n` $T_ZONE $MEM_MB $CPU_CT
+     register: basics
+   - debug: var=basics.stdout_lines
